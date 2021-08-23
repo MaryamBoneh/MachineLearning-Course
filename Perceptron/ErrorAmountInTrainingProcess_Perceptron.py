@@ -30,7 +30,7 @@ for j in range(N):
     e = Y_train[j] - y_pred
     w = w + e * lr * X_train[j]
     Y_pred = np.matmul(X_train, w)
-    error = np.abs(np.mean(Y_train - Y_pred))
+    error = np.mean(np.abs(Y_train - Y_pred))
     loss.append(error)
     print('error: ', error)
 
