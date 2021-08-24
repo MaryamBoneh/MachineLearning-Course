@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-data = pd.read_csv('linear_data_train.csv')
+data = pd.read_csv('csv_files/linear_data_train.csv')
 data = np.array(data)
 
 X_train = np.array([data[:, 0], data[:, 1]])
