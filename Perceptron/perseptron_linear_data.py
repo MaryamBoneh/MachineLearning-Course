@@ -4,12 +4,18 @@ import matplotlib.pyplot as plt
 
 
 data = pd.read_csv('csv_files/linear_data_train.csv')
+test_data = pd.read_csv('csv_files/linear_data_test.csv')
+
 data = np.array(data)
+test_data = np.array(test_data)
 
 X_train = np.array([data[:, 0], data[:, 1]])
 Y_train = np.array(data[:, 2])
+X_train = X_train.reshape(-1, 2)
 
-X_train = X_train.reshape(1000, 2)
+X_test = np.array([data[:, 0], data[:, 1]])
+Y_test = np.array(data[:, 2])
+X_test = X_test.reshape(-1, 2)
 
 print(X_train)
 print(Y_train)
@@ -47,3 +53,51 @@ for j in range(N):
     plt.pause(0.01)
 
 plt.show()
+
+
+class Perceptron:
+    def __init__(self):
+        self.W = w
+
+        
+    def predict(self, X_test):
+        Y_predic = np.matmul(X_test, self.W)
+        return Y_predic
+    
+
+    def evaluation(self, X_test, Y_test):
+        Y_predic = np.matmul(X_test, self.W)
+
+
+        Y_predic[Y_predic > 0] = 1
+        Y_predic[Y_predic<0] = -1             
+        evaluation = np.count_nonzero(Y_predic != Y_test)
+        
+        for i in range(len(X_test)):
+            print('X_test[i] : ', X_test[i])
+            print('w: ', w)
+        #     if(X_test[i,0]*W[0,0]<0 or X_test[i,1]*W[0,1]<0): 
+        #     y_test_pred.append(-1)
+        # elif(X_test[i,0]*W[0,0]>0 and X_test[i,1]*W[0,1]>0):
+        #     y_test_pred.append(1)  
+
+
+        
+        # if metric == 'accuracy':
+        #     Y_predic[Y_predic > 0] = 1
+        #     Y_predic[Y_predic<0] = -1
+        #     evaluation = np.count_nonzero(Y_predic == Y_test) / len(Y_test) * 100  
+             
+
+
+        Y_predic = np.matmul(X_test, self.w)
+        subtract = np.abs(Y_test - Y_predic)
+        average = np.mean(subtract)
+
+        mae=np.mean(subtract)
+        mse=np.mean((subtract)**2)
+
+
+        return average, mae, mse
+model = Perceptron()
+model.evaluation()
