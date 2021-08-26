@@ -76,19 +76,6 @@ class Perceptron:
         for i in range(len(X_test)):
             print('X_test[i] : ', X_test[i])
             print('w: ', w)
-        #     if(X_test[i,0]*W[0,0]<0 or X_test[i,1]*W[0,1]<0): 
-        #     y_test_pred.append(-1)
-        # elif(X_test[i,0]*W[0,0]>0 and X_test[i,1]*W[0,1]>0):
-        #     y_test_pred.append(1)  
-
-
-        
-        # if metric == 'accuracy':
-        #     Y_predic[Y_predic > 0] = 1
-        #     Y_predic[Y_predic<0] = -1
-        #     evaluation = np.count_nonzero(Y_predic == Y_test) / len(Y_test) * 100  
-             
-
 
         Y_predic = np.matmul(X_test, self.w)
         subtract = np.abs(Y_test - Y_predic)

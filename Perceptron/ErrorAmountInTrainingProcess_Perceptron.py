@@ -1,4 +1,3 @@
-from os import error
 import numpy as np
 from numpy.core.fromnumeric import mean
 import pandas as pd
